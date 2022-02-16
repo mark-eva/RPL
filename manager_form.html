@@ -1,0 +1,70 @@
+{{ define "ManagerForm" }}
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+<head>
+  
+  <meta charset="UTF-8"/> 
+  <title>Draft Mode Fantasy Football League Aggregator</title>
+  
+  <link type="text/css" href="https://dl.dropbox.com/s/8akiyeglqhqr4u5/rpl_stylesheet.css" rel="stylesheet"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css"/>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+<script type='text/javascript'>
+
+var numberOfmanager_ides = 0;
+
+$(document).ready(function(){
+    $("#add-manager_id").click(function(e){
+        e.preventDefault();
+        numberOfmanager_ides++;
+        var label = '<label for="data[manager_id][' + numberOfmanager_ides + ']">Enter manager ID ' + (numberOfmanager_ides + 1) + '</label> ';
+        var input = '<input type="text" name="m" id="data[manager_id][' + numberOfmanager_ides + ']" />';
+        var removeButton = '<button class="remove-manager_id">Remove</button>';
+        var html = "<div class='manager_id'>" + label + input + removeButton + "</div>";
+        $("#form1").find("#add-manager_id").before(html);
+    });
+});
+
+$(document).on("click", ".remove-manager_id",function(e){
+    numberOfmanager_ides--;
+    e.preventDefault();
+    $(this).parents(".manager_id").remove();
+    //update labels
+    $("#form1").find("label[for^='data[manager_id]']").each(function(){
+        $(this).html("manager_id " + ($(this).parents('.manager_id').index() + 1));
+    });
+});
+
+</script>
+
+
+
+
+</head>
+
+<body>
+
+  <h1>See the statistics of your own league</h1>
+  <p>Enter your manager ID and see the stats of all managers in your league.
+      <br>
+    You can add multiple manager IDs and see several leagues at once.</p>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<form id="form1" method="get" action="/index">
+    <div class="manager_id">
+        <label for="data[manager_id][0]">Enter a manager ID</label>
+        <input type="text" name="m" id="data[manager_id][0]" />
+    </div>
+    <button id="add-manager_id">Add another</button>
+    <br />
+    <input id="submit_button" type="submit" value="Submit" />
+</form>
+  
+
+</body>
+
+</html>
+{{end}}
