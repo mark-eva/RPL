@@ -17,4 +17,5 @@ Result:
 - Postgresdb
 - Go Lang installed
 
-**Set-up Guide:**
+**Installation:**
+-- 
