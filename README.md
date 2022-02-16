@@ -1,5 +1,5 @@
 # RPL
-Automated tallying website for managers of Ross Barkleys Fantasy Premier league. This Includes the following capability  Real-time update combined league tables for A and B league Consumes all Premier league Data via REST API for further analytics. 
+Automated tallying website for managers of Ross Barkleys Fantasy Premier league. This Includes the following capability  Real-time update of combined league tables for A and B league Consumes all Premier league Data via REST API for further analytics. 
 
 #  Usecase: 
   In Fantasy Premier League Draft mode, there is currently no way to tally or combine multiple teams. The app takes one or more manager id as an input and returns the following in the form of html table
@@ -11,4 +11,8 @@ Automated tallying website for managers of Ross Barkleys Fantasy Premier league.
 
    
 
+**Pre-requisites**
+- Postgresdb
+- Go Lang installed
 
+**Set-up Guide:**
